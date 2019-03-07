@@ -1,3 +1,39 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var hiveManager_1 = require("../managers/hiveManager");
+var hiveManager = new hiveManager_1.HiveManager();
+$(document).ready(function () {
+    var searchParams = new URLSearchParams(window.location.search);
+    var id = searchParams.get("id");
+    var hive = hiveManager.getHive(id);
+    if (hive) {
+        fillHiveData(hive);
+    }
+    else {
+        window.location.href = "../index.html";
+    }
+    function fillHiveData(hive) {
+        console.log(hive.geolocation);
+        $("#name").text(hive.name);
+        $("#address").text(hive.address);
+        $("#beesAmount").text(hive.beesAmount);
+        $("#installDate").text(hive.installationDate);
+        $("#lastHarvest").text(hive.lastHarvestDate);
+        $("#description").text(hive.description);
+        $("#comment").text(hive.comment);
+        $("#latitude").text(hive.geolocation.latitude.toFixed(4));
+        $("#longitude").text(hive.geolocation.longitude.toFixed(4));
+    }
+    $(".details header .settings").on("click", function () {
+        window.location.href = "save-hive.html?id=" + hive.id;
+    });
+    $(".details main .button").on("click", function () {
+        window.location.href = "measures-hive.html?id=" + hive.id;
+    });
+});
+
+},{"../managers/hiveManager":2}],2:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var HiveManager = (function () {
@@ -92,3 +128,5 @@ var HiveManager = (function () {
     return HiveManager;
 }());
 exports.HiveManager = HiveManager;
+
+},{}]},{},[1]);

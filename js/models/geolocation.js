@@ -1,3 +1,5 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var Geolocation = (function () {
     function Geolocation(latitude, longitude) {
         if (latitude == undefined || longitude == undefined) {
@@ -6,6 +8,8 @@ var Geolocation = (function () {
         else {
             this._longitude = longitude;
             this._latitude = latitude;
+            console.log(this._longitude);
+            console.log(this._latitude);
         }
     }
     Object.defineProperty(Geolocation.prototype, "latitude", {
@@ -30,16 +34,19 @@ var Geolocation = (function () {
     });
     Geolocation.prototype.getCurrentPosition = function () {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                this._latitude = position.coords.latitude;
-                this._longitude = position.coords.longitude;
-            }, function (error) {
-                console.warn("Couldn't get geolocation");
-            });
+            navigator.geolocation.getCurrentPosition(this.getCurrentPositionSuccess.bind(this), this.getCurrentPositionError);
         }
         else {
             console.warn("Geolocation isn't allowed");
         }
     };
+    Geolocation.prototype.getCurrentPositionSuccess = function (position) {
+        this._latitude = position.coords.latitude;
+        this._longitude = position.coords.longitude;
+    };
+    Geolocation.prototype.getCurrentPositionError = function (error) {
+        console.warn("Couldn't get geolocation", error);
+    };
     return Geolocation;
 }());
+exports.Geolocation = Geolocation;

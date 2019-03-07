@@ -1,32 +1,121 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var jquery_1 = __importDefault(require("jquery"));
 var hiveManager_1 = require("../managers/hiveManager");
 var hiveManager = new hiveManager_1.HiveManager();
-jquery_1.default(document).ready(function () {
+$(document).ready(function () {
     addHivesToView();
     function addHivesToView() {
         hiveManager.hives.forEach(function (hive) {
             console.log(hive.name, hive.id);
-            jquery_1.default(".hive-list").append(generateHiveTemplate(hive));
+            $(".hive-list").append(generateHiveTemplate(hive));
         });
     }
     function generateHiveTemplate(hive) {
         console.warn(hive.name, hive);
-        return "<div class=\"hive-item-list\">\n                    <div class=\"title\">" + hive.name + "</div>\n                    <div class=\"delete\" data-index=\"" + hive.id + "\">\n                        <i class=\"far fa-trash-alt\"></i>\n                    </div>\n                </div>";
+        return "<div class=\"hive-item-list\">\n                    <h2 class=\"title\"><a href=\"views/details-hive.html?id=" + hive.id + "\">" + hive.name + "</a></h2>\n                    <div class=\"delete\" data-index=\"" + hive.id + "\">\n                        <i class=\"far fa-trash-alt\"></i>\n                    </div>\n                </div>";
     }
-    jquery_1.default(".hive-item-list .delete").on("click", function () {
-        console.log(jquery_1.default(this).data("index"));
-        hiveManager.removeHive(jquery_1.default(this).data("index"));
-        jquery_1.default(this).parent().remove();
-    });
-    jquery_1.default(".from main .button").on("click", function () {
-    });
-    jquery_1.default(".details main .button").on("click", function () {
-    });
-    jquery_1.default(".details header .settings").on("click", function () {
+    $(".hive-item-list .delete").on("click", function () {
+        console.log($(this).data("index"));
+        hiveManager.removeHive($(this).data("index"));
+        $(this).parent().remove();
     });
 });
+
+},{"../managers/hiveManager":2}],2:[function(require,module,exports){
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var HiveManager = (function () {
+    function HiveManager() {
+        this._hives = [];
+        this.retrieveHives();
+    }
+    Object.defineProperty(HiveManager.prototype, "hives", {
+        get: function () {
+            return this._hives;
+        },
+        set: function (hives) {
+            this._hives = hives;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    HiveManager.prototype.addHive = function (hive) {
+        this._hives.push(hive);
+        this.storeHives();
+    };
+    HiveManager.prototype.updateHive = function (hive) {
+        var hiveIndex = this._hives.findIndex(function (h) { return h.id == hive.id; });
+        if (hiveIndex > -1) {
+            this._hives[hiveIndex] = hive;
+            this.storeHives();
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    HiveManager.prototype.removeHive = function (id) {
+        var hiveIndex = this._hives.findIndex(function (h) { return h.id == id; });
+        if (hiveIndex > -1) {
+            this._hives.splice(hiveIndex, 1);
+            this.storeHives();
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    HiveManager.prototype.getHive = function (id) {
+        var hive = this._hives.find(function (h) { return h.id == id; });
+        return hive != undefined ? hive : undefined;
+    };
+    HiveManager.prototype.clearHives = function () {
+        window.localStorage.clear();
+    };
+    HiveManager.prototype.hasHive = function (key) {
+        return window.localStorage.getItem(key) != null ? true : false;
+    };
+    HiveManager.prototype.storeHives = function () {
+        console.log(this._hives);
+        window.localStorage.setItem("hives", this.stringifyHives(this._hives));
+    };
+    HiveManager.prototype.retrieveHives = function () {
+        var hivesFromLocalStorage = window.localStorage.getItem("hives");
+        if (hivesFromLocalStorage) {
+            this._hives = JSON.parse(hivesFromLocalStorage);
+            return this._hives;
+        }
+        return [];
+    };
+    HiveManager.prototype.prepareHiveStorage = function (h) {
+        var keys = Object.keys(h);
+        var hive = {};
+        keys.forEach(function (k) {
+            var newKey = k.replace('_', '');
+            hive[newKey] = h[k];
+            if (hive[newKey] instanceof Object) {
+                var subKeys = Object.keys(hive[newKey]);
+                var subObject_1 = {};
+                subKeys.forEach(function (sk) {
+                    var newSubKey = sk.replace('_', '');
+                    subObject_1[newSubKey] = hive[newKey][sk];
+                });
+                hive[newKey] = subObject_1;
+            }
+        });
+        console.log(hive);
+        return hive;
+    };
+    HiveManager.prototype.stringifyHives = function (hives) {
+        var preparedHives = [];
+        for (var i in hives) {
+            preparedHives.push(this.prepareHiveStorage(hives[i]));
+        }
+        return JSON.stringify(preparedHives);
+    };
+    return HiveManager;
+}());
+exports.HiveManager = HiveManager;
+
+},{}]},{},[1]);

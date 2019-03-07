@@ -10,6 +10,8 @@
             crossorigin="anonymous">
             <script src="./../libs/jquery-3.3.1.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js" defer></script>
+        <script type="text/javascript" src="./../libs/jquery-3.3.1.min.js" defer></script>
+        <script type="text/javascript" src="./../js/controllers/measures.js" defer></script>
         <script type="text/javascript" src="./../js/controllers/sensors.js" defer></script>
         <title>Beekeeper - Home</title>
     </head>
@@ -20,7 +22,7 @@
         </header>
 
         <main>
-            <h2>My first hive</h2>     
+            <h2 id="name"></h2>     
             <div class="compass-section">
                 <div>
                     <p id="doTiltLR">0°</p>

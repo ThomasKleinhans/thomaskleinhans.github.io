@@ -187,6 +187,7 @@
   -webkit-transform: translate3d(-50%, -50%, 0);
           transform: translate3d(-50%, -50%, 0);
   margin: -40px 0;
+  display: none;
 }
 
 body {

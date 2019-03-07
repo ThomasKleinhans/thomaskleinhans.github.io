@@ -53,7 +53,7 @@ $(function()
 {
     $("#askButton").click( function()
     {
-        $(".progress-bar").show();
+        $(".progress-bar").css('display',"block");
         duration=0;
         min=-1;
         max=-1;
@@ -150,7 +150,7 @@ $(function()
         duration += interval;
         if(duration > 10000){
 
-            $(".progress-bar").hide();
+            $(".progress-bar").css('display',"none");
 
             duration=0;
             accelerometer.stop();

@@ -6,11 +6,11 @@ if ('DeviceOrientationEvent' in window) {
   
   function deviceOrientationHandler (eventData) {
     var tiltLR = eventData.gamma;
-    var tiltFB = eventData.beta*-1;
+    var tiltFB = eventData.beta;
     var dir = eventData.alpha;
     
     document.getElementById("doTiltLR").innerHTML = Math.round(tiltLR) + "°";
-    document.getElementById("doTiltFB").innerHTML = Math.round(tiltFB) + "°";
+    document.getElementById("doTiltFB").innerHTML = Math.round(tiltFB)*-1 + "°";
   
     var logo = document.getElementById("imgLogo");
     //logo.style.webkitTransform = "rotate(" + tiltLR + "deg) rotate3d(1,0,0, " + (tiltFB * -1) + "deg)";

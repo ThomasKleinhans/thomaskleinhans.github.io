@@ -148,7 +148,7 @@ $(function()
 
     function intervalHandler(interval) {
         duration += interval;
-        if(duration > 30000){
+        if(duration > 10000){
 
             $(".progress-bar").hide();
 

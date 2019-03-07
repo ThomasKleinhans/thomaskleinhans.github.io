@@ -171,8 +171,8 @@
 }
 
 .progress {
-  -webkit-animation: loader 30s ease infinite;
-          animation: loader 30s ease infinite;
+  -webkit-animation: loader 10s ease infinite;
+          animation: loader 10s ease infinite;
   background: #F5EC3F;
   color: #fff;
   padding: 10px;

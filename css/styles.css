@@ -184,6 +184,7 @@ body.home main .hive-list .hive-item-list {
       -ms-flex-align: center;
           align-items: center;
   color: #4B4B4B;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -303,6 +304,7 @@ body.details main .geolocation {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 2em;
 }
 
 body.details main .geolocation div {
@@ -334,7 +336,6 @@ body.details main .hive-data h2 {
 
 body.details main .hive-data p {
   font-family: "Open sans";
-  font-size: 1em;
   margin: 0;
 }
 

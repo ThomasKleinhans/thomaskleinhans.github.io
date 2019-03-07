@@ -312,8 +312,9 @@ body.measures main .graphs {
   font-size: 1.5em;
 }
 
-body.measures main .graphs .graph div {
-  height: 50vh;
+body.measures main .graphs p {
+  display: inline-block;
+  width: 20%;
 }
 
 body.measures main .button-container {

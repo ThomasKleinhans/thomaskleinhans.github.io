@@ -148,9 +148,10 @@ $(function()
 
     function intervalHandler(interval) {
         duration += interval;
-        if(duration > 10000){
-
+        if(duration > 9500){
             $(".progress-bar").css('display',"none");
+        }
+        if(duration > 10000){
 
             duration=0;
             accelerometer.stop();

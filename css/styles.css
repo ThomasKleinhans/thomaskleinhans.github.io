@@ -1,0 +1,332 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'Bebas';
+  src: url(../assets/fonts/BEBAS.ttf);
+}
+
+@font-face {
+  font-family: 'Open sans';
+  src: url(../assets/fonts/OpenSans-Regular.ttf);
+}
+
+.button {
+  background: #ED6424;
+  border: none;
+  font-family: "Bebas";
+  font-size: 3em;
+  color: #F5EC3F;
+  cursor: pointer;
+  width: 90%;
+  border-radius: 20px;
+  margin-bottom: 3vh;
+  outline: none;
+}
+
+.alveolus {
+  background: #F5EC3F;
+  padding: 5px;
+  background: url("../assets/img/alvéole.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  cursor: pointer;
+}
+
+.compass-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+  right: 5%;
+  top: 15%;
+  max-height: 200px;
+}
+
+.compass-section div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  vertical-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.compass-section div p {
+  margin-right: 2vw;
+}
+
+.compass-section div .compass-container {
+  /* perspective: 300;*/
+  /* -webkit-perspective: 300;*/
+  background-image: url("./../assets/img/bg-bubble.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 20vw;
+  max-width: 200px;
+  margin: 2%;
+}
+
+.compass-section div .compass {
+  width: 20vw;
+  max-width: 200px;
+}
+
+.compass-section p {
+  font-size: 0.8em;
+  font-family: "Open sans";
+  margin-top: 2vw;
+}
+
+body {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 10fr;
+      grid-template-rows: 1fr 10fr;
+  margin: 0;
+  height: 100vh;
+  background: #4B4B4B;
+}
+
+body header {
+  background: #ED6424;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  vertical-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body header h1 {
+  width: 90%;
+  text-align: center;
+}
+
+body header h1 a {
+  font-family: "Bebas";
+  color: #F7F5D7;
+  text-decoration: none;
+}
+
+body header p .alveolus {
+  width: 100px;
+  height: 100px;
+  color: #F5EC3F;
+}
+
+body header p .alveolus i {
+  font-size: 0.5em;
+}
+
+body aside {
+  position: absolute;
+  right: 10%;
+  bottom: 10%;
+  font-size: 4em;
+}
+
+body aside .alveolus {
+  width: 100px;
+  height: 100px;
+  line-height: 1.65;
+  color: #F5EC3F;
+}
+
+body aside .alveolus a {
+  color: #F5EC3F;
+}
+
+body.home main .hive-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body.home main .hive-list .hive-item-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 10vh;
+  width: 100%;
+  font-size: 2em;
+  vertical-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #4B4B4B;
+  cursor: pointer;
+}
+
+body.home main .hive-list .hive-item-list .title {
+  width: 90%;
+  font-family: "Bebas";
+}
+
+body.home main .hive-list .hive-item-list:nth-child(even) {
+  background: #F2EB74;
+}
+
+body.home main .hive-list .hive-item-list:nth-child(odd) {
+  background: #F7F5D7;
+}
+
+body.form {
+  -ms-grid-rows: 1fr 8fr;
+      grid-template-rows: 1fr 8fr;
+}
+
+body.form main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+body.form main > * {
+  margin-top: 1%;
+}
+
+body.form main input, body.form main textarea {
+  color: #4B4B4B;
+  font-size: 2em;
+  width: 80%;
+  font-family: "Bebas";
+  border: none;
+  padding: 5px;
+  outline: none;
+  resize: none;
+}
+
+body.form main input:nth-child(even), body.form main textarea:nth-child(even) {
+  background: #F7F5D7;
+}
+
+body.form main input:nth-child(odd), body.form main textarea:nth-child(odd) {
+  background: #F2EB74;
+}
+
+body.form main input.big, body.form main textarea.big {
+  height: 20vh;
+}
+
+body.details {
+  background: #F7F5D7;
+}
+
+body.details main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body.details main .hive-data {
+  text-align: center;
+  width: 70%;
+}
+
+body.details main .hive-data h2 {
+  font-family: "Bebas";
+}
+
+body.details main .hive-data p {
+  font-family: "Open sans";
+  font-size: 1em;
+  margin: 0;
+}
+
+body.details main .button {
+  margin-top: 5%;
+  width: 50%;
+}
+
+body.measures {
+  background: #F7F5D7;
+}
+
+body.measures main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  color: #4B4B4B;
+}
+
+body.measures main h2 {
+  font-family: "Bebas";
+  font-size: 2em;
+  width: 80%;
+}
+
+body.measures main .graphs {
+  width: 100%;
+  font-family: "Bebas";
+  font-size: 1.5em;
+}
+
+body.measures main .graphs .graph div {
+  height: 50vh;
+}
+
+body.measures main .button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/*# sourceMappingURL=styles.css.map */

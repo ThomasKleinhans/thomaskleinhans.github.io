@@ -53,6 +53,7 @@ $(function()
 {
     $("#askButton").click( function()
     {
+        $(".progress-bar").show();
         duration=0;
         min=-1;
         max=-1;
@@ -121,22 +122,18 @@ $(function()
     ValuesY.push(acceleration.y);
     ValuesZ.push(acceleration.z);
 
-    //alert(info);
-
     var length = Math.sqrt(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z * acceleration.z );
-
-    //alert(length);
 
     Values.push(length);
     Label.push("");
     
     sum += length;
     avg = sum / ++count;
-    document.getElementById("avg").innerHTML = avg;
+    document.getElementById("avg").innerHTML = avg.toFixed(3);
 
     if(max == -1 || max < length){
       max = length;
-      document.getElementById("max").innerHTML = max;
+      document.getElementById("max").innerHTML = max.toFixed(3);
     }  
   }
   
@@ -153,6 +150,9 @@ $(function()
         duration += interval;
         if(duration > 30000){
 
+            $(".progress-bar").hide();
+
+            duration=0;
             accelerometer.stop();
             
             Label[0] = 0;
@@ -215,6 +215,10 @@ $(function()
                 }
             });
             
+
+
+            
+
             gyroscope.stop();
             gravity.stop(); 
         }

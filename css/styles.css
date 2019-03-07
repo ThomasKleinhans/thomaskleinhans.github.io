@@ -90,7 +90,107 @@
   margin-top: 2vw;
 }
 
+@-webkit-keyframes loader {
+  0% {
+    width: 0;
+  }
+  20% {
+    width: 10%;
+  }
+  25% {
+    width: 24%;
+  }
+  43% {
+    width: 41%;
+  }
+  56% {
+    width: 50%;
+  }
+  66% {
+    width: 52%;
+  }
+  71% {
+    width: 60%;
+  }
+  75% {
+    width: 76%;
+  }
+  94% {
+    width: 86%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes loader {
+  0% {
+    width: 0;
+  }
+  20% {
+    width: 10%;
+  }
+  25% {
+    width: 24%;
+  }
+  43% {
+    width: 41%;
+  }
+  56% {
+    width: 50%;
+  }
+  66% {
+    width: 52%;
+  }
+  71% {
+    width: 60%;
+  }
+  75% {
+    width: 76%;
+  }
+  94% {
+    width: 86%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.progress-bar {
+  border-radius: 60px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.progress-bar span {
+  display: block;
+}
+
+.bar {
+  background: #4B4B4B;
+}
+
+.progress {
+  -webkit-animation: loader 30s ease infinite;
+          animation: loader 30s ease infinite;
+  background: #F5EC3F;
+  color: #fff;
+  padding: 10px;
+  width: 0;
+}
+
+.progress-bar {
+  left: 50%;
+  max-width: 50%;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+          transform: translate3d(-50%, -50%, 0);
+  margin: -40px 0;
+}
+
 body {
+  font-weight: normal;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr;
@@ -119,12 +219,14 @@ body header {
 body header h1 {
   width: 90%;
   text-align: center;
+  font-weight: normal;
 }
 
 body header h1 a {
   font-family: "Bebas";
   color: #F7F5D7;
   text-decoration: none;
+  font-weight: normal;
 }
 
 body header p .alveolus {
@@ -191,6 +293,12 @@ body.home main .hive-list .hive-item-list {
 body.home main .hive-list .hive-item-list .title {
   width: 90%;
   font-family: "Bebas";
+  font-weight: normal;
+}
+
+body.home main .hive-list .hive-item-list .title a {
+  color: #4B4B4B;
+  text-decoration: none;
 }
 
 body.home main .hive-list .hive-item-list:nth-child(even) {
@@ -234,6 +342,7 @@ body.form main input, body.form main textarea {
   font-size: 2em;
   width: 80%;
   font-family: "Bebas";
+  font-weight: normal;
   border: none;
   padding: 5px;
   outline: none;
@@ -288,6 +397,7 @@ body.details main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  color: #4B4B4B;
 }
 
 body.details main .geolocation {
@@ -304,7 +414,7 @@ body.details main .geolocation {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 body.details main .geolocation div {
@@ -319,10 +429,13 @@ body.details main .geolocation div {
   margin: 5%;
   margin-top: 10%;
   text-align: center;
+  color: #4B4B4B;
 }
 
 body.details main .geolocation div p {
+  color: #4B4B4B;
   font-family: "Open sans";
+  font-size: 1em;
 }
 
 body.details main .hive-data {
@@ -332,6 +445,7 @@ body.details main .hive-data {
 
 body.details main .hive-data h2 {
   font-family: "Bebas";
+  font-weight: normal;
 }
 
 body.details main .hive-data p {
@@ -362,6 +476,7 @@ body.measures main {
 
 body.measures main h2 {
   font-family: "Bebas";
+  font-weight: normal;
   font-size: 2em;
   width: 80%;
 }
@@ -370,11 +485,44 @@ body.measures main .graphs {
   width: 100%;
   font-family: "Bebas";
   font-size: 1.5em;
+  font-weight: normal;
 }
 
-body.measures main .graphs p {
-  display: inline-block;
-  width: 20%;
+body.measures main .graphs .stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+body.measures main .graphs .stats div {
+  margin: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+body.measures main .graphs .stats div p {
+  margin: 5px;
 }
 
 body.measures main .button-container {

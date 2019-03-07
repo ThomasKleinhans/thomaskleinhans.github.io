@@ -13,6 +13,7 @@ $(document).ready(function () {
     else {
         window.location.href = "../index.html";
     }
+    $(".progress-bar").hide();
 });
 
 },{"../managers/hiveManager":2}],2:[function(require,module,exports){
